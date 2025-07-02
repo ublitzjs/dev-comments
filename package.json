@@ -20,5 +20,14 @@
     "url": "https://github.com/ublitzjs/dev-comments/issues",
     "email": "diril656@gmail.com"
   },
-  "homepage": "https://github.com/ublitzjs/dev-comments#readme"
+  "homepage": "https://github.com/ublitzjs/dev-comments#readme",
+  "license": "ISC",
+  "keywords": [
+    "development",
+    "comments",
+    "code-removal",
+    "optimization",
+    "workers",
+    "ublitzjs"
+  ]
 }
