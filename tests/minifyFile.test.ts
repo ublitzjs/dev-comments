@@ -5,7 +5,7 @@ import os from "node:os";
 
 import { minifyFile } from "../mjs/index.mjs";
 
-const tmpDir = path.join(os.tmpdir(), "vitest-devstrip-tests");
+const tmpDir = path.join(os.tmpdir(), "vitest-devstrip-tests", "minifyFile");
 const inputFile = (name: string) => path.join(tmpDir, `input-${name}.js`);
 const outputFile = (name: string) => path.join(tmpDir, `output-${name}.js`);
 

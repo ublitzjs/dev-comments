@@ -1,13 +1,15 @@
-var { Worker } = require("node:worker_threads");
-var path = require("node:path");
-var fs = require("fs/promises");
-var os = require("node:os");
-var cpus = os.cpus().length;
+var { Worker } = require("node:worker_threads"),
+  path = require("node:path"),
+  fs = require("fs/promises"),
+  os = require("node:os"),
+  cpus = os.cpus().length;
 
 async function minifyFolder(inputDir, outputDir, filesToMinify) {
   await fs.mkdir(outputDir, { recursive: true });
+  var promises = [];
   for (let i = 1; i <= cpus && filesToMinify.length; i++)
-    RegisterWorkersToFiles(inputDir, outputDir, filesToMinify);
+    promises.push(RegisterWorkersToFiles(inputDir, outputDir, filesToMinify));
+  return Promise.all(promises);
 }
 async function RegisterWorkersToFiles(inputDir, outputDir, filesToMinify) {
   do {

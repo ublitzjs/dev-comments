@@ -1,11 +1,9 @@
-import fs from "node:fs";
-import { workerData, parentPort } from "node:worker_threads";
-import path from "node:path";
-
-const { input, output } = workerData;
-
-const START_TAG = "/*_START_DEV_*/";
-const END_TAG = "/*_END_DEV_*/";
+var fs = require("node:fs"),
+  { workerData, parentPort } = require("node:worker_threads"),
+  path = require("node:path"),
+  { input, output } = workerData,
+  START_TAG = "/*_START_DEV_*/",
+  END_TAG = "/*_END_DEV_*/";
 (async () => {
   await fs.promises.mkdir(path.dirname(output), { recursive: true });
 

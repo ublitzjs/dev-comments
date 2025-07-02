@@ -6,8 +6,10 @@ var cpus = os.cpus().length;
 
 async function minifyFolder(inputDir, outputDir, filesToMinify) {
   await fs.mkdir(outputDir, { recursive: true });
+  var promises = [];
   for (let i = 1; i <= cpus && filesToMinify.length; i++)
-    RegisterWorkersToFiles(inputDir, outputDir, filesToMinify);
+    promises.push(RegisterWorkersToFiles(inputDir, outputDir, filesToMinify));
+  return Promise.all(promises);
 }
 async function RegisterWorkersToFiles(inputDir, outputDir, filesToMinify) {
   do {
